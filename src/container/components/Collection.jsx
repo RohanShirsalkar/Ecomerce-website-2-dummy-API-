@@ -20,13 +20,13 @@ export default function Collection({ limit, category, collectionTitle }) {
     },[])
 
     const productList = fetchedProducts && fetchedProducts.map(item => {
-        return <div class="col"><Product_Card key={item.id} title={item.title} description={item.description} price={item.price} thumbnail={item.thumbnail} category={item.category} /></div>
+        return <div key={item.id} className="col"><Product_Card key={item.id} title={item.title} description={item.description} price={item.price} thumbnail={item.thumbnail} category={item.category} /></div>
     })
 
     return (
-        <div class="container mb-3 border-bottom">
+        <div className="container mb-3 border-bottom">
             <h3 className='fw-light mb-3 '>{collectionTitle}</h3>
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-4">
                 {productList ? productList : <Spinner />}
             </div>
         </div>

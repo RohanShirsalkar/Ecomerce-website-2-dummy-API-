@@ -16,36 +16,22 @@ export default function Search_Page() {
 
     return (
         <>
-            <div class="card">
+            <div className="card">
 
-                <div class="card-body d-flex justify-content-center">
+                <div className="card-body d-flex justify-content-center">
 
                     {   /* Sort BTN */}
 
-                    <div class="dropdown me-2">
-                        <button class="btn btn-outline-dark " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <div className="dropdown me-2">
+                        <button className="btn btn-outline-dark " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                             FILTER
                         </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="#">Rating</a></li>
-                            <li><a class="dropdown-item" href="#">Price Low to High</a></li>
-                            <li><a class="dropdown-item" href="#">Price High to Low</a></li>
+                        <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a className="dropdown-item" href="#">Rating</a></li>
+                            <li><a className="dropdown-item" href="#">Price Low to High</a></li>
+                            <li><a className="dropdown-item" href="#">Price High to Low</a></li>
                         </ul>
                     </div>
-
-
-                    {   /* Filter BTN */}
-
-                    {/* <div class="dropdown">
-                        <button class="btn btn-outline-dark " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                            Filter
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="#">Rating</a></li>
-                            <li><a class="dropdown-item" href="#">Price Low to High</a></li>
-                            <li><a class="dropdown-item" href="#">Price High to Low</a></li>
-                        </ul>
-                    </div> */}
                 </div>
 
 

@@ -18,7 +18,6 @@ export default function Login_Page() {
         dispatch(loginUser(userData))
     }
 
-    console.log(data)
 
     return (
         <div className='w-50 mx-auto p-3'>
