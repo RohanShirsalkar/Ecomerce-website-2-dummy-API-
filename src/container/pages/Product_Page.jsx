@@ -1,73 +1,77 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux/es/exports'
+import { useParams } from 'react-router-dom'
+import { getSingleProduct } from '../../redux/actions/products_action'
+import { useState } from 'react'
 
 export default function Product_Page() {
+
+    const [quantity, setQuantity] = useState(1);
+
+    const { id } = useParams()
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getSingleProduct(id))
+    }, [])
+
+    const product = useSelector(state => state.singleProduct)
+
+    const handleInputChange = (event) => {
+
+        const btn = event.target.id
+        if (btn === "+") {
+            setQuantity(quantity >= 10 ? 10 : quantity + 1)
+        }
+        else if (btn === "-") {
+            setQuantity(quantity != 0 ? quantity - 1 : 0)
+        }
+    }
+
+
     return (
-        <div className='container d-flex mb-3  pt-3 '>
-            <div className='w-50 '>
-                <img src="https://images-eu.ssl-images-amazon.com/images/I/41jr5nrfFoL._SX300_SY300_QL70_FMwebp_.jpg" className="img-fluid w-75 shadow-sm border" alt="..."></img>
-            </div>
+
+        <>
+
+            <div className='container d-flex mb-3  pt-3 ' style={{ minHeight: "100vh" }}>
+
+                <div className='w-50 position-relative'>
+                    <img src={product.images && product.images[0]} className="img-fluid w-75 shadow-sm border" alt="..."></img>
+                </div>
+
+                <div className='w-50'>
+                    <h2 className='mb-3 fw-normal'>{product.title}</h2>
+                    <p className='border fw-bold text-dark bg-white p-1 ps-2'>{product.category}</p>
+                    <p className='border fw-bold text-dark bg-white p-1 ps-2'>{product.rating}<span>/5 rating</span></p>
+                    <p className='fs-1 '>${product.price}</p>
+
+                    <div className='d-flex mb-4'>
+
+                        <div className="btn-group mb-2" role="group" aria-label="Basic example" style={{ width: "7rem" }}>
+                            <button type="button" onClick={handleInputChange} id="-" className="btn btn-dark " style={{ width: "2rem" }}>-</button>
+                            <input contentEditable="false" value={quantity} className="w-50 text-center" aria-describedby="basic-addon1" />
+                            <button type="button" onClick={handleInputChange} id="+" className="btn btn-dark">+</button>
+                        </div>
 
 
-            <div className='w-50'>
-                <h4>--Title--</h4>
-                <p className=''>--rating--<span>/5 rating</span></p>
-                <p className='fs-4'><span>₹ </span>--price--/-</p>
-
-                <div className='d-flex'>
-
-                    <div className="btn-group mb-2" role="group" aria-label="Basic example" style={{ width: "7rem" }}>
-                        <button type="button" id="-" className="btn btn-primary " style={{ width: "2rem" }}>-</button>
-                        <input contentEditable="false" className="w-50 text-center" aria-describedby="basic-addon1" />
-                        <button type="button" id="+" className="btn btn-primary">+</button>
                     </div>
 
+                    <div className='mb-4'>
+                        <button type="button" className="btn btn-lg btn-outline-dark me-3 w-25">Add to Cart</button>
+                        <Link to="/cart" type="button" className="btn btn-lg btn-warning  w-50 ">Buy Now</Link>
+                    </div>
+
+                    <div className="card mt-3">
+                        <div className="card-body">
+                            <p className='fs-5'>Description</p>
+                            <p>{product.description}</p>
+                        </div>
+                    </div>
 
                 </div>
 
-                <button type="button" className="btn btn-primary me-3 w-25">Add to Cart</button>
-                <Link to="/cart" type="button" className="btn btn-warning  w-25">Buy Now</Link>
-
-                <div className="accordion mt-3" id="accordionExample">
-                    <div className="accordion-item">
-                        <h2 className="accordion-header" id="headingOne">
-                            <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                About this item
-                            </button>
-                        </h2>
-                        <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                            <div className="accordion-body">
-                                <p>--description1--</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="accordion-item">
-                        <h2 className="accordion-header" id="headingTwo">
-                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                Warranty
-                            </button>
-                        </h2>
-                        <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                            <div className="accordion-body">
-                                <p>--description2--</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="accordion-item">
-                        <h2 className="accordion-header" id="headingThree">
-                            <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                Box content
-                            </button>
-                        </h2>
-                        <div id="collapseThree" className="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                            <div className="accordion-body">
-                                <p>--description3--</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
-
-        </div>
+        </>
     )
 }

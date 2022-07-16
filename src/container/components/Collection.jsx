@@ -20,7 +20,7 @@ export default function Collection({ limit, category, collectionTitle }) {
     },[])
 
     const productList = fetchedProducts && fetchedProducts.map(item => {
-        return <div key={item.id} className="col"><Product_Card key={item.id} title={item.title} description={item.description} price={item.price} thumbnail={item.thumbnail} category={item.category} /></div>
+        return <div key={item.id} className="col"><Product_Card key={item.id} id={item.id}  title={item.title} description={item.description} price={item.price} thumbnail={item.thumbnail} category={item.category} /></div>
     })
 
     return (

@@ -19,18 +19,9 @@ export default function Login_Page() {
         dispatch(loginUser(loginDetails))
     }
 
-    // useEffect(() => {
-    //     if(data.userData.token){
-    //         dispatch(setLogin("true"))
-    //     }
-    // },[data])
-
-    console.log(data.userData.status)
-
-
     return (
         <div className='w-50 mx-auto p-3'>
-            <h3 className='fw-light'>User Login</h3>
+            <h3 className='fw-normal'>User Login</h3>
                 {data.userData.status === 400 ? <span className='text-danger'>*{data.userData.data.message}</span> : ""}
             <div className="mb-3 mt-3">
                 <label htmlFor="exampleInputEmail1" className="form-label">Username</label>

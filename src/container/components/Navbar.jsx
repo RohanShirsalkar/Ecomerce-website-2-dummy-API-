@@ -12,6 +12,7 @@ export default function Navbar() {
 
     const handleSearchFn = () => {
         dispatch(getSearchedProducts(query))
+        setQuery("")
     }
 
     const handleKeyPressFn = (e) => {
@@ -25,7 +26,7 @@ export default function Navbar() {
                 <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                   
                     <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center align-items-center mb-md-0">
-                        <li><Link to="/" className='fw-light fs-4 me-3 text-decoration-none text-light' style={{ letterSpacing: "0.2rem" }}>STORE</Link></li>
+                        <li><Link to="/" className='fw-normal fs-4 me-3 text-decoration-none text-light' style={{ letterSpacing: "0.2rem" }}>STORE</Link></li>
                         <li><a href="#" className="nav-link px-2 text-light">Features</a></li>
                         <li><a href="#" className="nav-link px-2 text-light">Pricing</a></li>
                         <li><a href="#" className="nav-link px-2 text-light">FAQs</a></li>

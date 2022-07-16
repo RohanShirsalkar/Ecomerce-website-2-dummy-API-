@@ -1,18 +1,15 @@
 import React from 'react'
-import Collection from '../components/Collection'
 import { useSelector } from 'react-redux/es/hooks/useSelector'
-import Product_Card from '../components/Product_Card'
 import Spinner from '../components/Spinner'
 import SearchResult_Card from '../components/SearchResult_Card'
 
 export default function Search_Page() {
 
     const products = useSelector(state => state.searchedProduct.products)
-    console.log(products)
+
     const productsList = products && products.map(item => {
-        return <SearchResult_Card key={item.id} title={item.title} description={item.description} price={item.price} thumbnail={item.thumbnail} category={item.category} />
-        // return <Product_Card key={item.id} title={item.title} description={item.description} price={item.price} thumbnail={item.thumbnail} category={item.category} />
-    })
+        return <SearchResult_Card key={item.id} id={item.id} title={item.title} description={item.description} price={item.price} thumbnail={item.thumbnail} category={item.category} />
+    })  
 
     return (
         <>

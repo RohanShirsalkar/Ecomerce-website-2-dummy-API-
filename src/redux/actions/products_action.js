@@ -61,11 +61,14 @@ export const getSingleProduct = (productId) => {
     return async (dispatch) => {
 
         await axios({
-            url : api_data.PRODUCTS_URL + `/${productId}`,
-            method : "GET",
-            headers : api_data.HEADERS
+            url: api_data.PRODUCTS_URL + `/${productId}`,
+            method: "GET",
+            headers: api_data.HEADERS
         })
-        .then(res => console.log(res))
-        .catch(err => console.log(err))
+            .then(res => dispatch({
+                type : action_types.GET_SINGLE_PRODUCT,
+                payload : res.data
+            }))
+            .catch(err => console.log(err))
     }
 }
