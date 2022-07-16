@@ -11,6 +11,7 @@ import {
 import Search_Page from "./container/pages/Search_Page";
 import Footer from "./container/components/Footer";
 import Cart_Page from "./container/pages/Cart_Page";
+import Product_Page from "./container/pages/Product_Page";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home_page />} />
+          <Route path="/product" element={<Product_Page />} />
           <Route path="/search" element={<Search_Page />} />
           <Route path="/cart" element={<Cart_Page />} />
           <Route path="/sign-up" element={<Signup_Page />} />

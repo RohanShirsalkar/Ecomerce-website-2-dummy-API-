@@ -1,10 +1,23 @@
 import action_types from "../constants/action_type"
 
-export const userReducer = (state ={}, {type, payload}) => {
+export const userReducer = (state = {}, { type, payload }) => {
 
     switch (type) {
         case action_types.LOGIN_USER:
-            return state = {...state, ...payload}
+            // setIslogin(true)
+            return state = { ...state, ...payload }
+            break;
+
+        default:
+            return state;
+    }
+}
+
+export const checkIsLogin = (state = { isLogin : false }, {type, payload}) => {
+
+    switch (type) {
+        case action_types.SET_LOGIN:
+            return {...state, isLogin : payload}
             break;
     
         default:

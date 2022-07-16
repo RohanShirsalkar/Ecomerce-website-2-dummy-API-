@@ -1,6 +1,6 @@
 import axios from "axios"
-import product_action_type from "../constants/product_action_types"
 import api_data from "../../api/api_data"
+import action_types from "../constants/action_type"
 
 export const getProducts = ({ limit }) => {
 
@@ -12,7 +12,7 @@ export const getProducts = ({ limit }) => {
             headers: api_data.HEADERS
         })
             .then(res => dispatch({
-                type: product_action_type.GET_PRODUCT,
+                type: action_types.GET_PRODUCT,
                 payload: res.data
             }))
             .catch(err => console.log(err.response))
@@ -29,7 +29,7 @@ export const getProductsByCategory = ({ limit, category }) => {
             headers: api_data.HEADERS
         })
             .then(res => dispatch({
-                type: product_action_type.GET_PRODUCTS_BY_CATEGORY,
+                type: action_types.GET_PRODUCTS_BY_CATEGORY,
                 payload: res.data
             }))
             .catch(err => {
@@ -49,10 +49,23 @@ export const getSearchedProducts = (query) => {
             heders: api_data.HEADERS
         })
             .then(res => dispatch({
-                type: product_action_type.SEARCH_PRODUCT,
+                type: action_types.SEARCH_PRODUCT,
                 payload: res.data
             }))
             .catch(err => console.log(err))
+    }
+}
 
+export const getSingleProduct = (productId) => {
+
+    return async (dispatch) => {
+
+        await axios({
+            url : api_data.PRODUCTS_URL + `/${productId}`,
+            method : "GET",
+            headers : api_data.HEADERS
+        })
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
     }
 }

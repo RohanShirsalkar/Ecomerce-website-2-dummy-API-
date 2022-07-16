@@ -1,11 +1,13 @@
 import { combineReducers } from "redux";
-import { userReducer } from "./user_reducer";
-import { productReducer, searchedProductReducer } from "./product_reducer";
+import { checkIsLogin, userReducer } from "./user_reducer";
+import { productReducer, searchedProductReducer, singleProductReducer } from "./product_reducer";
 
 
 const reducers = combineReducers( {
-    user : userReducer,
+    userStatus : checkIsLogin,
+    userData : userReducer,
     products : productReducer,
+    singleProduct : singleProductReducer,
     searchedProduct : searchedProductReducer,
 })
 
