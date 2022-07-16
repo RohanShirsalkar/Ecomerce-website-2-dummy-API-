@@ -11,6 +11,10 @@ export const productReducer = (state = {}, { type, payload }) => {
             return { ...state, ...payload }
             break;
 
+        case action_types.REMOVE_PRODUCTS:
+            return {}
+            break;
+
         default:
             return state;
     }
@@ -23,6 +27,10 @@ export const searchedProductReducer = (state = {}, { type, payload }) => {
             return { ...state, ...payload }
             break;
 
+        case action_types.REMOVE_SEARCHED_PRODUCT:
+            return {}
+            break;
+
         default:
             return state;
     }
@@ -31,8 +39,13 @@ export const searchedProductReducer = (state = {}, { type, payload }) => {
 export const singleProductReducer = (state = {}, { type, payload }) => {
 
     switch (type) {
+
         case action_types.GET_SINGLE_PRODUCT:
             return { ...state, ...payload }
+            break;
+
+        case action_types.REMOVE_SINGLE_PRODUCT:
+            return {}
             break;
 
         default:

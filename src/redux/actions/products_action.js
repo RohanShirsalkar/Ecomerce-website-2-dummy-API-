@@ -24,7 +24,7 @@ export const getProductsByCategory = ({ limit, category }) => {
     return async function (dispatch) {
 
         await axios({
-            url: api_data.PRODUCTS_URL + `/category/${category}?limit=${limit}`,
+            url: api_data.PRODUCTS_URL + `/category/${"category"}?limit=${limit}`,
             method: "GET",
             headers: api_data.HEADERS
         })
@@ -35,8 +35,14 @@ export const getProductsByCategory = ({ limit, category }) => {
             .catch(err => {
                 console.log(err)
             })
-
     }
+}
+
+export const removeAllProducts = () => {
+
+    return (dispatch) => dispatch({
+        type : action_types.REMOVE_PRODUCTS
+    })
 }
 
 export const getSearchedProducts = (query) => {
@@ -56,6 +62,13 @@ export const getSearchedProducts = (query) => {
     }
 }
 
+export const removeSearchedProducts = () => {
+
+    return (dispatch) => dispatch({
+        type: action_types.REMOVE_SEARCHED_PRODUCT
+    })
+}
+
 export const getSingleProduct = (productId) => {
 
     return async (dispatch) => {
@@ -66,9 +79,16 @@ export const getSingleProduct = (productId) => {
             headers: api_data.HEADERS
         })
             .then(res => dispatch({
-                type : action_types.GET_SINGLE_PRODUCT,
-                payload : res.data
+                type: action_types.GET_SINGLE_PRODUCT,
+                payload: res.data
             }))
             .catch(err => console.log(err))
     }
+}
+
+export const removeSingleProduct = () => {
+
+    return (dispatch) => dispatch({
+        type: action_types.REMOVE_SINGLE_PRODUCT,
+    })
 }

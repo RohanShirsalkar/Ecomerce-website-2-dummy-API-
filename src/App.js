@@ -21,12 +21,12 @@ function App() {
         <Routes>
           <Route path="/" element={<Home_page />} />
           <Route path="/product/:id" element={<Product_Page />} />
-          <Route path="/search" element={<Search_Page />} />
+          <Route path="/search/:query" element={<Search_Page />} />
           <Route path="/cart" element={<Cart_Page />} />
           <Route path="/sign-up" element={<Signup_Page />} />
           <Route path="/login" element={<Login_Page />} />
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
       </Router>
     </>
   );

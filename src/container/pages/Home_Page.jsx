@@ -5,7 +5,7 @@ export default function Home_page() {
     return (
         <div className='container pt-4 '>
             <div>
-                <Collection collectionTitle={"Smartphones"} limit={8} />
+                <Collection collectionTitle={"Products"} category={"watch"} limit={8} />
             </div>
         </div>
     )
