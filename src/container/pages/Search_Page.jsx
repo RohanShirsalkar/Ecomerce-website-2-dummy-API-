@@ -26,7 +26,6 @@ export default function Search_Page() {
         return () => {
             dispatch(removeSearchedProducts())
         }
-
     }, [query])
 
     return (

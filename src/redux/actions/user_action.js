@@ -1,6 +1,9 @@
 import axios from "axios"
+import api_data from "../../api/api_data"
 import action_types from "../constants/action_type"
 
+
+// currently not in use
 export const loginUser = (loginDetails) => {
 
     return async function (dispatch) {
@@ -21,6 +24,24 @@ export const loginUser = (loginDetails) => {
         }))
     }
 } 
+//
+
+export const getUserById = () => {
+
+    return async (dispatch) => {
+
+        await axios({
+            url : api_data.GET_USER_URL + "/" + api_data.USER_ID,
+            method : "GET",
+            headers : api_data.HEADERS,
+        })
+        .then(res => dispatch({
+            type : action_types.GET_USER,
+            payload : res.data
+        }))
+        .catch(err => console.log(err))
+    }
+}
 
 export const setLogin = (status) => {
     

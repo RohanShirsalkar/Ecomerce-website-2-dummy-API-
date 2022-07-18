@@ -46,7 +46,7 @@ export default function Product_Page() {
                         <img src={product.images && product.images[0]} className="img-fluid w-75 shadow-sm border" alt="..."></img>
                     </div>
 
-                    <div className='w-50 p-3'>
+                    <div className='w-50 p-3    '>
                         <h2 className='mb-3 fw-normal'>{product.title}</h2>
                         <p className='border fw-bold text-dark bg-white p-1 ps-2'>{product.category}</p>
                         <p className='border fw-bold text-dark bg-white p-1 ps-2'>{product.rating}<span>/5 rating</span></p>

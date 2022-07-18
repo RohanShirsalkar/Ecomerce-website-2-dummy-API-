@@ -5,7 +5,11 @@ export const userReducer = (state = {}, { type, payload }) => {
     switch (type) {
         case action_types.LOGIN_USER:
             // setIslogin(true)
-            return state = { ...state, ...payload }
+            return { ...state, ...payload }
+            break;
+            
+        case action_types.GET_USER:
+            return {...state, ...payload}
             break;
 
         default:

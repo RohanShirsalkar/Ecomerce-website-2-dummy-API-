@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 
 export default function SearchResult_Card({ id, title, description, price, thumbnail, category }) {
 
+    console.log(id)
+
     return (
 
         <div className="card mb-3 shadow-sm" style={{ minWidth: "80%", maxWidth: "80%" }}>

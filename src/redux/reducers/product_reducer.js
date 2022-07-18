@@ -52,3 +52,4 @@ export const singleProductReducer = (state = {}, { type, payload }) => {
             return state;
     }
 }
+    

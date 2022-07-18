@@ -12,8 +12,21 @@ import Search_Page from "./container/pages/Search_Page";
 import Footer from "./container/components/Footer";
 import Cart_Page from "./container/pages/Cart_Page";
 import Product_Page from "./container/pages/Product_Page";
+import { useEffect } from "react";
+import { getUserById } from "./redux/actions/user_action";
+import { useDispatch } from "react-redux/es/exports"; 
+import { getCartProducts } from "./redux/actions/cart_action";
+import { useSelector } from "react-redux/es/exports";
 
 function App() {
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getUserById())
+  },[])
+
+
   return (
     <>
       <Router>
